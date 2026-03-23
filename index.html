@@ -1,0 +1,522 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أصالة | متجرك الفاخر</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- شريط التنبيهات العلوي -->
+    <div class="top-bar">
+        <div class="container">
+            <p>🎉 شحن مجاني للطلبات فوق 500 ريال | خصم 20% على أول طلب</p>
+        </div>
+    </div>
+
+    <!-- الهيدر الرئيسي -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1>أصالة</h1>
+                    <span>ASALAH</span>
+                </div>
+                
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#home" class="active">الرئيسية</a></li>
+                        <li><a href="#products">المنتجات</a></li>
+                        <li><a href="#categories">الأقسام</a></li>
+                        <li><a href="#offers">العروض</a></li>
+                        <li><a href="#contact">تواصل معنا</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn search-btn"><i class="fas fa-search"></i></button>
+                    <button class="icon-btn wishlist-btn"><i class="fas fa-heart"></i><span class="badge">3</span></button>
+                    <button class="icon-btn cart-btn" onclick="toggleCart()">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="badge" id="cart-count">0</span>
+                    </button>
+                    <button class="menu-toggle" onclick="toggleMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- البحث المتقدم -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-container">
+            <input type="text" placeholder="ابحث عن منتجاتك المفضلة..." id="searchInput">
+            <button class="search-submit"><i class="fas fa-search"></i></button>
+            <button class="close-search" onclick="closeSearch()"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- القسم الرئيسي (Hero) -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920');">
+                <div class="slide-content">
+                    <h2>أناقة لا تُضاهى</h2>
+                    <p>اكتشف تشكيلتنا الفاخرة من المنتجات المختارة بعناية</p>
+                    <a href="#products" class="btn-primary">تسوق الآن</a>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1920');">
+                <div class="slide-content">
+                    <h2>عروض حصرية</h2>
+                    <p>خصومات تصل إلى 50% على المنتجات المختارة</p>
+                    <a href="#offers" class="btn-primary">اكتشف العروض</a>
+                </div>
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+        </div>
+    </section>
+
+    <!-- مميزات المتجر -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>شحن سريع</h3>
+                    <p>توصيل خلال 24-48 ساعة</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>دفع آمن</h3>
+                    <p>100% حماية مشترياتك</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-undo"></i>
+                    <h3>إرجاع سهل</h3>
+                    <p>30 يوماً للإرجاع المجاني</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-headset"></i>
+                    <h3>دعم 24/7</h3>
+                    <p>فريق جاهز لمساعدتك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الأقسام -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>تسوق حسب القسم</h2>
+                <p>اختر من مجموعتنا المتنوعة</p>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card large">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600" alt="أزياء">
+                    <div class="category-overlay">
+                        <h3>أزياء</h3>
+                        <span>150+ منتج</span>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400" alt="إكسسوارات">
+                    <div class="category-overlay">
+                        <h3>إكسسوارات</h3>
+                        <span>80+ منتج</span>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400" alt="أحذية">
+                    <div class="category-overlay">
+                        <h3>أحذية</h3>
+                        <span>60+ منتج</span>
+                    </div>
+                </div>
+                <div class="category-card">
+                    <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=400" alt="إلكترونيات">
+                    <div class="category-overlay">
+                        <h3>إلكترونيات</h3>
+                        <span>120+ منتج</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- المنتجات المميزة -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>منتجاتنا المميزة</h2>
+                <p>اخترنا لك الأفضل بعناية</p>
+            </div>
+            
+            <div class="filter-tabs">
+                <button class="tab-btn active" data-filter="all">الكل</button>
+                <button class="tab-btn" data-filter="new">جديد</button>
+                <button class="tab-btn" data-filter="bestseller">الأكثر مبيعاً</button>
+                <button class="tab-btn" data-filter="sale">تخفيضات</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- المنتجات ستُضاف ديناميكياً -->
+            </div>
+
+            <div class="load-more">
+                <button class="btn-secondary" onclick="loadMoreProducts()">عرض المزيد</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- العرض الترويجي -->
+    <section class="promo-section" id="offers">
+        <div class="container">
+            <div class="promo-content">
+                <div class="promo-text">
+                    <span class="promo-label">عرض محدود</span>
+                    <h2>خصم 50% على تشكيلة الصيف</h2>
+                    <p>لا تفوت الفرصة! عرض ساري حتى نفاد الكمية</p>
+                    <div class="countdown">
+                        <div class="countdown-item">
+                            <span id="days">02</span>
+                            <label>يوم</label>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="hours">14</span>
+                            <label>ساعة</label>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="minutes">35</span>
+                            <label>دقيقة</label>
+                        </div>
+                        <div class="countdown-item">
+                            <span id="seconds">48</span>
+                            <label>ثانية</label>
+                        </div>
+                    </div>
+                    <a href="#products" class="btn-primary">تسوق الآن</a>
+                </div>
+                <div class="promo-image">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800" alt="عرض خاص">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- آراء العملاء -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>آراء عملائنا</h2>
+                <p>نفتخر بثقة عملائنا</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"تجربة تسوق رائعة! المنتجات فاخرة والتوصيل سريع جداً. أنصح الجميع بالتسوق من هنا."</p>
+                    <div class="customer">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="عميل">
+                        <div>
+                            <h4>سارة الأحمد</h4>
+                            <span>عميلة مميزة</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"جودة لا مثيل لها! اشتريت عدة منتجات وكلها كانت أفضل من التوقعات. سأعود بالتأكيد."</p>
+                    <div class="customer">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="عميل">
+                        <div>
+                            <h4>محمد العلي</h4>
+                            <span>عميل مميز</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- النشرة البريدية -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>اشترك في نشرتنا البريدية</h2>
+                <p>احصل على أحدث العروض والتخفيضات مباشرة إلى بريدك</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="أدخل بريدك الإلكتروني">
+                    <button type="submit" class="btn-primary">اشترك الآن</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="main-footer" id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo">
+                        <h3>أصالة</h3>
+                        <span>ASALAH</span>
+                    </div>
+                    <p>وجهتك الأولى للتسوق الفاخر. نقدم لك منتجات عالية الجودة بتجربة تسوق استثنائية.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-snapchat"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="#">من نحن</a></li>
+                        <li><a href="#">الشروط والأحكام</a></li>
+                        <li><a href="#">سياسة الإرجاع</a></li>
+                        <li><a href="#">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>خدمة العملاء</h4>
+                    <ul>
+                        <li><a href="#">تواصل معنا</a></li>
+                        <li><a href="#">الأسئلة الشائعة</a></li>
+                        <li><a href="#">تتبع الطلب</a></li>
+                        <li><a href="#">الدعم الفني</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>تواصل معنا</h4>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> الرياض، المملكة العربية السعودية</li>
+                        <li><i class="fas fa-phone"></i> 9200XXXXX</li>
+                        <li><i class="fas fa-envelope"></i> info@asalah.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 أصالة. جميع الحقوق محفوظة.</p>
+                <div class="payment-methods">
+                    <i class="fab fa-cc-visa"></i>
+                    <i class="fab fa-cc-mastercard"></i>
+                    <i class="fab fa-cc-apple-pay"></i>
+                    <i class="fas fa-wallet"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- عربة التسوق -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>سلة المشتريات</h3>
+            <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- عناصر السلة ستُضاف ديناميكياً -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>المجموع:</span>
+                <span id="cartTotal">0 ريال</span>
+            </div>
+            <button class="btn-primary checkout-btn" onclick="checkout()">إتمام الشراء</button>
+            <button class="btn-secondary continue-btn" onclick="toggleCart()">مواصلة التسوق</button>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+
+    <!-- نافذة تفاصيل المنتج -->
+    <div class="product-modal" id="productModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeProductModal()"><i class="fas fa-times"></i></button>
+            <div class="modal-body" id="modalBody">
+                <!-- تفاصيل المنتج ستُضاف ديناميكياً -->
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة الدفع -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-content">
+            <div class="checkout-header">
+                <h2>إتمام الشراء</h2>
+                <button class="close-checkout" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="checkout-body">
+                <div class="checkout-steps">
+                    <div class="step active" data-step="1">
+                        <span class="step-number">1</span>
+                        <span class="step-label">الشحن</span>
+                    </div>
+                    <div class="step" data-step="2">
+                        <span class="step-number">2</span>
+                        <span class="step-label">الدفع</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <span class="step-number">3</span>
+                        <span class="step-label">التأكيد</span>
+                    </div>
+                </div>
+
+                <form id="checkoutForm" class="checkout-form">
+                    <!-- الخطوة 1: معلومات الشحن -->
+                    <div class="form-step active" id="step1">
+                        <h3>معلومات الشحن</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>الاسم الأول</label>
+                                <input type="text" required>
+                            </div>
+                            <div class="form-group">
+                                <label>الاسم الأخير</label>
+                                <input type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>رقم الجوال</label>
+                            <input type="tel" required>
+                        </div>
+                        <div class="form-group">
+                            <label>العنوان</label>
+                            <input type="text" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>المدينة</label>
+                                <select required>
+                                    <option value="">اختر المدينة</option>
+                                    <option value="riyadh">الرياض</option>
+                                    <option value="jeddah">جدة</option>
+                                    <option value="dammam">الدمام</option>
+                                    <option value="makkah">مكة</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>الرمز البريدي</label>
+                                <input type="text" required>
+                            </div>
+                        </div>
+                        <button type="button" class="btn-primary" onclick="nextStep(2)">التالي</button>
+                    </div>
+
+                    <!-- الخطوة 2: الدفع -->
+                    <div class="form-step" id="step2">
+                        <h3>اختر طريقة الدفع</h3>
+                        <div class="payment-methods-select">
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="card" checked>
+                                <div class="payment-box">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>بطاقة ائتمان</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="applepay">
+                                <div class="payment-box">
+                                    <i class="fab fa-apple"></i>
+                                    <span>Apple Pay</span>
+                                </div>
+                            </label>
+                            <label class="payment-option">
+                                <input type="radio" name="payment" value="cod">
+                                <div class="payment-box">
+                                    <i class="fas fa-money-bill-wave"></i>
+                                    <span>الدفع عند الاستلام</span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="card-details" id="cardDetails">
+                            <div class="form-group">
+                                <label>رقم البطاقة</label>
+                                <input type="text" placeholder="0000 0000 0000 0000" id="cardNumber">
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>تاريخ الانتهاء</label>
+                                    <input type="text" placeholder="MM/YY" id="expiryDate">
+                                </div>
+                                <div class="form-group">
+                                    <label>CVV</label>
+                                    <input type="text" placeholder="123" id="cvv">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>الاسم على البطاقة</label>
+                                <input type="text">
+                            </div>
+                        </div>
+
+                        <div class="order-summary">
+                            <h4>ملخص الطلب</h4>
+                            <div class="summary-row">
+                                <span>المجموع الفرعي</span>
+                                <span id="subtotal">0 ريال</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>الشحن</span>
+                                <span>مجاني</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span>الإجمالي</span>
+                                <span id="finalTotal">0 ريال</span>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="button" class="btn-secondary" onclick="prevStep(1)">السابق</button>
+                            <button type="button" class="btn-primary" onclick="nextStep(3)">تأكيد الطلب</button>
+                        </div>
+                    </div>
+
+                    <!-- الخطوة 3: التأكيد -->
+                    <div class="form-step" id="step3">
+                        <div class="confirmation">
+                            <div class="success-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <h3>تم تأكيد طلبك بنجاح!</h3>
+                            <p>رقم الطلب: <strong>#BK-2026-001</strong></p>
+                            <p>سنرسل لك تأكيد الطلب على بريدك الإلكتروني</p>
+                            <button type="button" class="btn-primary" onclick="closeCheckout()">العودة للتسوق</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- إشعارات -->
+    <div class="notifications" id="notifications"></div>
+
+    <!-- زر العودة للأعلى -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
